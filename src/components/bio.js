@@ -40,7 +40,7 @@ const Bio = () => {
     <div
       style={{
         display: `flex`,
-        marginBottom: rhythm(2.5),
+        marginBottom: rhythm(1.5),
       }}
     >
       <Image
@@ -56,12 +56,19 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
-        Written by <strong>{author.name}</strong> {author.summary}
+      <p
+      style={
+        {
+          marginBottom: '.75rem'
+        }
+      }
+      >
+        <strong>{author.name}</strong> 的记录地
+        <br></br><i>{author.summary}</i>
         {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a>
+        {/*<a href={`https://twitter.com/${social.twitter}`}>*/}
+        {/*  You should follow him on Twitter*/}
+        {/*</a>*/}
       </p>
     </div>
   )
