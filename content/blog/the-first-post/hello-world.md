@@ -2,6 +2,7 @@
 title: Hello World
 date: "2020-07-08"
 description: "Hello World"
+tags: ['生活','DNS']
 ---
 #### The first Hello-World
 折腾了好几天， 
