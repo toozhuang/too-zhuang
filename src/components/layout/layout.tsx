@@ -15,8 +15,17 @@ type LayoutProps = {
 class Layout extends React.PureComponent<LayoutProps> {
 
 
+  /**
+   *  title 不从 site meta data 里面获取，
+   *  改成自定义 style 的
+   * */
+  renderTitle = () => {
+    // style={{color: "red"}}
+    return <div>Too <span style={{ color: `#09a24a` }}>壮</span> to Strong</div>
+  }
+
   render() {
-    const { location, title, children } = this.props
+    const { location, children } = this.props
 
     // @ts-ignore
     const rootPath = `${__PATH_PREFIX__}/`
@@ -39,7 +48,7 @@ class Layout extends React.PureComponent<LayoutProps> {
             }}
             to={`/`}
           >
-            {title}
+            {this.renderTitle()}
           </Link>
         </h1>
       )
@@ -58,7 +67,7 @@ class Layout extends React.PureComponent<LayoutProps> {
             }}
             to={`/`}
           >
-            {title}
+            {this.renderTitle()}
           </Link>
         </h3>
       )
