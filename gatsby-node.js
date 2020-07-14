@@ -8,6 +8,25 @@ const _ =  require("lodash");
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+// 移出末尾的 '/'
+const replacePath = path => (path === `/` ? path : path.replace(/\/$/, ``))
+
+/**
+ * 下面这个方法好似删除了末尾的'/'
+ * 但是，看上去，不工作
+ */
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+  const oldPage = Object.assign({}, page)
+  // Remove trailing slash unless page is /
+  page.path = replacePath(page.path)
+  if (page.path !== oldPage.path) {
+    // Replace old page with new page
+    deletePage(oldPage)
+    createPage(page)
+  }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -66,7 +85,6 @@ exports.createPages = async ({ graphql, actions }) => {
   let tags = []
   // Iterate through each post, putting all found tags into `tags`
   posts.forEach((edge) => {
-    console.log("来了吧：：： ", edge, posts)
     if (_.get(edge, `node.frontmatter.tags`)) {
       tags = tags.concat(edge.node.frontmatter.tags)
     }
