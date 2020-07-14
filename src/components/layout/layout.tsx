@@ -20,7 +20,7 @@ class Layout extends React.PureComponent<LayoutProps> {
    *  改成自定义 style 的
    * */
   renderTitle = () => {
-    // style={{color: "red"}}
+
     return <div>Too <span style={{ color: `#09a24a` }}>壮</span> to Strong</div>
   }
 
