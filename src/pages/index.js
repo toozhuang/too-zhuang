@@ -15,9 +15,7 @@ const BlogIndex = ({data, location}) => {
             <SEO title="All posts"/>
             <Bio/>
             {/* todo: 在这里 添加 一个 navigation */}
-            <Link to={'/about'}>
-                About meeeee
-            </Link>
+
             {posts.map(({node}) => {
                 const title = node.frontmatter.title || node.fields.slug
                 return (
